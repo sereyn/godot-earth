@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq1oqhthatus4"]
+
+[ext_resource type="PackedScene" uid="uid://dfr4tahjtqaf" path="res://main.tscn" id="1_kxiq3"]
+[ext_resource type="Script" path="res://sphere.gd" id="1_w6xud"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0oicc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6msur"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w17q6"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_6msur")
+
+[node name="Sphere" type="Node3D"]
+script = ExtResource("1_w6xud")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(5025, 2418)
+
+[node name="Main" parent="SubViewport" instance=ExtResource("1_kxiq3")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0oicc")
+surface_material_override/0 = SubResource("StandardMaterial3D_w17q6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0023)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.744708, 0.667391, 0, -0.667391, 0.744708, 0, 3.64169, 3.55824)

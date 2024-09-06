@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var bg_node = $Bg
+
 var filepath := "res://ne_110m_admin_0_countries.json"
 var radius := 100.0
 var center := Vector2.ZERO
@@ -40,12 +42,16 @@ func update_bounding_box(x: float, y: float):
 func add_country_poly(points: PackedVector2Array):
 	var p := Polygon2D.new()
 	p.color = Color(randf(), randf(), randf())
+	p.antialiased = true
 	p.polygon = points
 	add_child(p)
 
 func fit_to_viewport():
 	var viewport_size = Vector2(get_viewport().size)
 	var rect := Rect2(min_x, min_y, max_x - min_x, max_y - min_y)
+	print("Size: %s" % rect.size)
+	bg_node.position = rect.position + rect.size / 2
+	bg_node.scale = rect.size
 	var scale_factor = min(viewport_size.x / rect.size.x, viewport_size.y / rect.size.y)
 	var scaled_rect_size = rect.size * scale_factor
 	var offset = (viewport_size - scaled_rect_size) / 2 - (rect.position * scale_factor)

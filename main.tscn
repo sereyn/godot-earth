@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfr4tahjtqaf"]
+[gd_scene load_steps=3 format=3 uid="uid://dfr4tahjtqaf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7du6w"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_vrac4"]
+
 [node name="Main" type="Node2D"]
+texture_repeat = 1
 script = ExtResource("1_7du6w")
+
+[node name="Bg" type="MeshInstance2D" parent="."]
+modulate = Color(0.0235294, 0.258824, 0.45098, 1)
+position = Vector2(-362, 302)
+scale = Vector2(365.5, 356.5)
+mesh = SubResource("QuadMesh_vrac4")

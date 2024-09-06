@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="earth"
-run/main_scene="res://main.tscn"
+run/main_scene="res://sphere.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/mode="canvas_items"
+
+[rendering]
+
+anti_aliasing/quality/screen_space_aa=1
